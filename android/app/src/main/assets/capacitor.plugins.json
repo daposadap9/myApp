@@ -1,0 +1,6 @@
+[
+	{
+		"pkg": "@fresha/capacitor-plugin-googlepay",
+		"classpath": "com.fresha.capacitor.googlepay.GooglePayPlugin"
+	}
+]

@@ -1,17 +1,92 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<div class="ion-page" #page>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title>Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content>
+  <ion-content class="ion-padding">
+    <ion-button id="open-modal" expand="block">Open</ion-button>
+    <ion-modal #modal trigger="open-modal" [canDismiss]="canDismiss" [presentingElement]="page">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar style="background: gray;">
+            <ion-row class="ion-align-items-center">
+              <ion-col size="3" class="ion-text-right">
+                
+              </ion-col>
+              <ion-col size="4">
+                <ion-text class="ion-text-center">Payment Form</ion-text>
+              </ion-col>
+              <ion-col size="4" class="ion-text-left">
+                <img src="../../assets/pci.png" style="width: 150px;" alt="Visa">
+              </ion-col>
+            </ion-row>
+            <ion-buttons slot="end">
+              <ion-button (click)="modal.dismiss()">X</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        
+        
+        <ion-content class="ion-padding">
+          <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <p>
+              PAYMENT AMOUNT
+            </p>
+            <ion-button>$228.00</ion-button>
+            <hr  style="border: 1px solid black; width: 200px; height: 1px;">
+            <div>
+              <ion-button (click)="initializeGooglePay()">Pagar con Google Pay</ion-button>     
+            </div>
+            <div>
+              <ion-button style="width: 240px;"
+              color="dark"
+              >
+                <ion-icon name="logo-apple" slot="start"></ion-icon>
+                Pay
+              </ion-button>
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; margin-top: 20px; margin-bottom: 20px;">
+                <hr style="flex-grow: 1; border-top: 1px solid gray;">
+                <span style="margin: 0 10px; color: gray;">OR</span>
+                <hr style="flex-grow: 1; border-top: 1px solid gray;">
+              </div>
+              <img src="../../assets/imagenes.jpg" style="width: 200px;" alt="Visa">
+            </div>
+            <hr  style="border: 1px solid black; width: 200px; height: 1px;">
+            <ion-item>
+              <ion-icon name="card" slot="start"></ion-icon>
+              <ion-input
+                aria-label="number card"
+                placeholder="number card"
+                class="custom"
+                [counter]="true"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="calendar" slot="start"></ion-icon>
+              <ion-input
+                aria-label="MM/YY"
+                placeholder="MM/YY"
+                class="custom"
+                [counter]="true"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="lock-closed" slot="start"></ion-icon>
+              <ion-input
+                aria-label="CVV"
+                placeholder="CVV"
+                class="custom"
+                [counter]="true"
+              ></ion-input>
+            </ion-item>
+            <ion-button color="dark" style="margin-top: 20px;">Pay with card</ion-button>
+          </div>
+          
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-content>
+</div>
